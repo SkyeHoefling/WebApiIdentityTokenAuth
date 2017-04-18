@@ -56,6 +56,13 @@ namespace WebApiIdentityTokenAuth
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            app.UseCors(b => b.WithOrigins("http://dev.localhost.com:4000")
+                .AllowAnyOrigin()
+                .AllowCredentials()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            app.UseIdentity();
             app.UseMvc();
         }
     }
