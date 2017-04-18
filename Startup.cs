@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using WebApiIdentityTokenAuth.Services;
 
 namespace WebApiIdentityTokenAuth
 {
@@ -45,6 +46,8 @@ namespace WebApiIdentityTokenAuth
             services.Configure<IdentityOptions>(o => {
                 o.SignIn.RequireConfirmedEmail = true;
             });
+
+            services.AddTransient<IMessageService, FileMessageService>();
 
             services.AddMvc();
             services.AddCors();
