@@ -35,7 +35,7 @@ namespace WebApiIdentityTokenAuth
             var connection = $@"Server={server};Database=purchasing_dev;user=sa;password=Password01!;";
             services.AddDbContext<IdentityDbContext>(options => options.UseSqlServer(
                 connection,
-                optionsBuilder => optionsBuilder.MigrationsAssembly("api")));
+                optionsBuilder => optionsBuilder.MigrationsAssembly("WebApiIdentityTokenAuth")));
 
             // configure token generation
             services.AddIdentity<IdentityUser, IdentityRole>()
